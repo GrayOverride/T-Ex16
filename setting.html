@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WFM Setting</title>
+    <link rel="stylesheet" href="node_modules/teleopti-styleguide/css/main.min.css">
+  </head>
+  <body>
+    <div class="panel material-depth-1">
+      <div class="sub-header">
+        <h2>Settings</h2>
+      </div>
+    <form name="form" class="wfm-form">
+     <div class="con-row">
+        <div class="con-flex">
+              <div class="form-input-wrap">
+                <label for="wfmUrl">Enter URL : <input name="wfmUrl" id="wfmUrl" placeholder="https://..." type="text"/></label>
+              </div>
+              <div class="con-footer">
+              <button class="wfm-btn wfm-btn-primary" onclick="saveURL()">Save</button>
+            </div>
+        </div>
+      </div>
+  </form>
+</div>
+  </body>
+  <script type="text/javascript">
+  var ipc = require('ipc');
+  var saveURL = function(){
+      var url = document.querySelector('input[name="wfmUrl"]').value;
+      ipc.send('sendUrl', {url: url});
+  };
+
+  </script>
+</html>
